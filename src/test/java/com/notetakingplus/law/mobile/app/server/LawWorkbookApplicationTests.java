@@ -1,4 +1,4 @@
-package com.workbookplus.law;
+package com.notetakingplus.law.mobile.app.server;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LawApplicationTests {
+public class LawWorkbookApplicationTests {
 
     @Test
     public void contextLoads() {
