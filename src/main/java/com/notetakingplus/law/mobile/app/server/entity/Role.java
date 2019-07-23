@@ -1,12 +1,16 @@
-package com.notetakingplus.law.mobile.app.server.model;
+package com.notetakingplus.law.mobile.app.server.entity;
 
 import lombok.Data;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Data
+@Entity
+@Table(name = "ROLE", schema = "LAW")
 public class Role {
 
     @Id
