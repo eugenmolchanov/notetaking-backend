@@ -6,34 +6,31 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "QUESTION", schema = "LAW")
-public class Question {
+@Table(name = "ARTICLE", schema = "LAW")
+public class Article {
 
     @Id
     @GeneratedValue
     private Integer id;
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "NAME", nullable = false, length = 100)
     private String name;
 
     @Column(name = "NUMBER", nullable = false)
     private Integer number;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "DISCIPLINE_ID")
-    private Discipline discipline;
+    @Column(name = "FULL_CONTENT", nullable = false)
+    private String fullContent;
+
+    @Column(name = "SHORT_CONTENT", nullable = false)
+    private String shortContent;
 
     @ManyToMany
-    private List<Article> articles;
-
-    @ManyToMany
-    private List<Contraction> contractions;
+    private List<Question> questions;
 }
