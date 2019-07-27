@@ -31,6 +31,6 @@ public class Article {
     @Column(name = "SHORT_CONTENT", nullable = false)
     private String shortContent;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "articles")
     private List<Question> questions;
 }

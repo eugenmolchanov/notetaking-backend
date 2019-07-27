@@ -25,6 +25,6 @@ public class Contraction {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "contractions")
     private List<Question> questions;
 }

@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -32,8 +33,16 @@ public class Question {
     private Discipline discipline;
 
     @ManyToMany
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ID")}
+    )
     private List<Article> articles;
 
     @ManyToMany
+    @JoinTable(
+            joinColumns = {@JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID")},
+            inverseJoinColumns = {@JoinColumn(name = "CONTRACTION_ID", referencedColumnName = "ID")}
+    )
     private List<Contraction> contractions;
 }
