@@ -5,21 +5,24 @@ import lombok.Data;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "QUESTION", schema = "LAW")
+@Table(catalog = "law", schema = "core", name = "question")
 public class Question {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_id_seq")
+    @SequenceGenerator(catalog = "law", schema = "core", sequenceName = "question_id_seq", name = "question_id_seq")
     private Integer id;
 
     @Column(name = "NAME", nullable = false)
@@ -34,6 +37,7 @@ public class Question {
 
     @ManyToMany
     @JoinTable(
+            catalog = "law", schema = "core", name = "question_article",
             joinColumns = {@JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ID")}
     )
@@ -41,6 +45,7 @@ public class Question {
 
     @ManyToMany
     @JoinTable(
+            catalog = "law", schema = "core", name = "question_contraction",
             joinColumns = {@JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "CONTRACTION_ID", referencedColumnName = "ID")}
     )
