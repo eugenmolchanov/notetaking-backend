@@ -33,11 +33,6 @@ dependencies {
     runtimeOnly 'org.postgresql:postgresql'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testCompile group: 'com.h2database', name: 'h2', version: '1.4.199'
     compile 'org.flywaydb:flyway-core:5.2.4'
-}
-
-flyway {
-    url = 'jdbc:postgresql://localhost:5432/law'
-    user = 'postgres'
-    password = 'docker'
 }
