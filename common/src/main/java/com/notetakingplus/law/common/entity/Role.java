@@ -1,7 +1,5 @@
 package com.notetakingplus.law.common.entity;
 
-import lombok.Data;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-@Data
 @Entity
 @Table(catalog = "law", schema = "core", name = "role")
 public class Role {
@@ -22,4 +19,20 @@ public class Role {
 
     @Column(name = "NAME", nullable = false, length = 45)
     private String name;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

@@ -15,19 +15,12 @@
 
     <properties>
         <java.version>11</java.version>
-        <lombok.version>1.18.8</lombok.version>
         <flyway.version>5.2.4</flyway.version>
-        <maven.compiler.plugin>3.6.1</maven.compiler.plugin>
+        <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.projectlombok</groupId>
-                <artifactId>lombok</artifactId>
-                <optional>true</optional>
-                <version>${lombok.version}</version>
-            </dependency>
             <dependency>
                 <groupId>org.flywaydb</groupId>
                 <artifactId>flyway-core</artifactId>

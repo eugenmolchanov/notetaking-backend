@@ -1,6 +1,7 @@
 module common {
     exports com.notetakingplus.law.common.entity;
-    requires lombok;
     requires java.persistence;
-    requires static org.mapstruct.processor; //TODO why is that??? lombok required this
+    requires spring.context;
+
+    opens com.notetakingplus.law.common.entity to org.hibernate.orm.core;
 }
