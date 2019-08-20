@@ -4,12 +4,6 @@ module law.mobile.main {
     requires common;
     requires java.persistence;
     requires spring.boot;
-    requires spring.orm;
-    requires java.sql;
-    requires com.zaxxer.hikari;
-    requires spring.beans;
-    requires spring.core;
-    requires org.flywaydb.core;
 
     // java.xml.bind and net.bytebuddy are used for resolving persistence unit root URL(exception during initialization)
     requires java.xml.bind;
