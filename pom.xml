@@ -15,19 +15,8 @@
 
     <properties>
         <java.version>11</java.version>
-        <flyway.version>5.2.4</flyway.version>
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-core</artifactId>
-                <version>${flyway.version}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
