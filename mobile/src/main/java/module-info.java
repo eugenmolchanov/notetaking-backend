@@ -12,6 +12,5 @@ module law.mobile.main {
 
     opens com.notetakingplus.law.mobile to spring.core, spring.beans, spring.context;
     opens com.notetakingplus.law.mobile.config to spring.core, spring.beans, spring.context;
-    opens com.notetakingplus.law.mobile.dao.impl to spring.core, spring.beans, spring.aop;
     //TODO could declare module 'open' but let's see which modules will require law.mobile.main open
 }
