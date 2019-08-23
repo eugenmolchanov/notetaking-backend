@@ -8,6 +8,7 @@ module law.mobile.main {
     // java.xml.bind and net.bytebuddy are used for resolving persistence unit root URL(exception during initialization)
     requires java.xml.bind;
     requires net.bytebuddy;
+    requires spring.data.jpa;
 
     opens com.notetakingplus.law.mobile to spring.core, spring.beans, spring.context;
     opens com.notetakingplus.law.mobile.config to spring.core, spring.beans, spring.context;

@@ -15,6 +15,8 @@
         <javax.persistence.version>2.2</javax.persistence.version>
         <spring.version>5.1.9.RELEASE</spring.version>
         <hikari.version>3.2.0</hikari.version>
+        <flyway.version>5.2.4</flyway.version>
+        <spring.data.jpa.version>2.1.10.RELEASE</spring.data.jpa.version>
     </properties>
 
     <dependencies>
@@ -41,6 +43,22 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+            <version>${flyway.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.jpa.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjweaver</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.aspectj</groupId>
+                    <artifactId>aspectjrt</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 
