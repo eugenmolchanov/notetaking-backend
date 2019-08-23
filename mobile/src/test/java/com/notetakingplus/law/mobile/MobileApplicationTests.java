@@ -23,7 +23,7 @@ public class MobileApplicationTests {
 
     @Test
     public void testPredefinedSqlScript() {
-        Assert.assertEquals("ТД", disciplineRepository.findById(1).get().getAbbreviation());
+        Assert.assertEquals("ГПП", disciplineRepository.findById(1).get().getAbbreviation());
     }
 
 }

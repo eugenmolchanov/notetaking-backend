@@ -34,7 +34,8 @@ CREATE TABLE question
     ID            SERIAL PRIMARY KEY,
     NAME          VARCHAR(255) NOT NULL,
     NUMBER        INT          NOT NULL,
-    DISCIPLINE_ID INT REFERENCES discipline (ID)
+    DISCIPLINE_ID INT REFERENCES discipline (ID),
+    UNIQUE (NUMBER, DISCIPLINE_ID)
 )
 
 

@@ -1,1 +1,0 @@
-insert into core.discipline values (1, 'Тестовая дисциплина', 'ТД', '1');
