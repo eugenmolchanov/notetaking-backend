@@ -2,6 +2,7 @@ package com.notetakingplus.law.common.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -28,17 +29,15 @@ public class Question {
     @Column(name = "NUMBER", nullable = false)
     private Integer number;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "DISCIPLINE_ID")
     private Discipline discipline;
 
-    @ManyToMany
-    @JoinTable(
-            catalog = "law", schema = "core", name = "question_article",
-            joinColumns = {@JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID")},
-            inverseJoinColumns = {@JoinColumn(name = "ARTICLE_ID", referencedColumnName = "ID")}
-    )
-    private List<Article> articles;
+    @Column(name = "FULL_CONTENT", nullable = false)
+    private String fullContent;
+
+    @Column(name = "SHORT_CONTENT", nullable = false)
+    private String shortContent;
 
     @ManyToMany
     @JoinTable(
@@ -80,12 +79,20 @@ public class Question {
         this.discipline = discipline;
     }
 
-    public List<Article> getArticles() {
-        return articles;
+    public String getFullContent() {
+        return fullContent;
     }
 
-    public void setArticles(List<Article> articles) {
-        this.articles = articles;
+    public void setFullContent(String fullContent) {
+        this.fullContent = fullContent;
+    }
+
+    public String getShortContent() {
+        return shortContent;
+    }
+
+    public void setShortContent(String shortContent) {
+        this.shortContent = shortContent;
     }
 
     public List<Contraction> getContractions() {
