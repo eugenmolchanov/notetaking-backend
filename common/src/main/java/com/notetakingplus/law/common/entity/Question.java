@@ -1,5 +1,7 @@
 package com.notetakingplus.law.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -29,6 +31,7 @@ public class Question {
     @Column(name = "NUMBER", nullable = false)
     private Integer number;
 
+    @JsonBackReference
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "DISCIPLINE_ID")
     private Discipline discipline;

@@ -11,6 +11,7 @@ module common {
     requires spring.orm;
     requires org.flywaydb.core;
     requires spring.data.commons;
+    requires jackson.annotations;
 
     opens com.notetakingplus.law.common.entity to org.hibernate.orm.core, spring.core;
 

@@ -1,5 +1,7 @@
 package com.notetakingplus.law.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -28,6 +30,7 @@ public class Discipline {
     @Column(name = "FREE_ACCESS", nullable = false)
     private Boolean isFree;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "discipline")
     private List<Question> questions;
 
