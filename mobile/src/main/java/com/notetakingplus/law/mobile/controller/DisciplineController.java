@@ -18,7 +18,7 @@ public class DisciplineController {
         this.disciplineService = disciplineService;
     }
 
-    @GetMapping(value = "/disciplines/free")
+    @GetMapping(value = "/disciplines/access/free")
     public List<Discipline> getDisciplines() {
         return disciplineService.getFreeDisciplines();
     }
