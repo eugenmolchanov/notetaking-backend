@@ -1,5 +1,7 @@
 package com.notetakingplus.law.common.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ public class Contraction {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "contractions")
     private List<Question> questions;
 
