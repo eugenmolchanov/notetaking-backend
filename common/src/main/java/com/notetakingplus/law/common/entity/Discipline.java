@@ -1,6 +1,7 @@
 package com.notetakingplus.law.common.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -58,10 +59,12 @@ public class Discipline {
         this.abbreviation = abbreviation;
     }
 
+    @JsonProperty(value = "isFree")
     public Boolean getFree() {
         return isFree;
     }
 
+    @JsonProperty(value = "isFree")
     public void setFree(Boolean free) {
         isFree = free;
     }
