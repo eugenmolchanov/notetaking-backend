@@ -5,8 +5,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -34,12 +32,11 @@ public class User {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "PREMIUM", nullable = false)
-    private Boolean isPremium;
+    @Column(name = "ROLE", nullable = false)
+    private String role;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "ROLE_ID")
-    private Role role;
+    @Column(name = "ENABLED", nullable = false)
+    private Boolean isEnabled;
 
     public Integer getId() {
         return id;
@@ -89,19 +86,19 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getPremium() {
-        return isPremium;
-    }
-
-    public void setPremium(Boolean premium) {
-        isPremium = premium;
-    }
-
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
+    }
+
+    public Boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        isEnabled = enabled;
     }
 }

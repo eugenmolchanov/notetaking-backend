@@ -14,6 +14,7 @@
     <properties>
         <javax.persistence.version>2.2</javax.persistence.version>
         <spring.version>5.1.9.RELEASE</spring.version>
+        <spring.security.config.version>5.1.6.RELEASE</spring.security.config.version>
         <hikari.version>3.2.0</hikari.version>
         <flyway.version>5.2.4</flyway.version>
         <jackson.core>2.9.9</jackson.core>
@@ -40,6 +41,11 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-orm</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.config.version}</version>
         </dependency>
         <dependency>
             <groupId>org.flywaydb</groupId>

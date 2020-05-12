@@ -1,12 +1,5 @@
 CREATE SCHEMA core
 
-    CREATE TABLE role
-    (
-        ID   SERIAL PRIMARY KEY,
-        NAME VARCHAR(45) NOT NULL
-    )
-
-
     CREATE TABLE "user"
     (
         ID            SERIAL PRIMARY KEY,
@@ -15,8 +8,8 @@ CREATE SCHEMA core
         EMAIL_ADDRESS VARCHAR(255) NOT NULL UNIQUE,
         USER_NAME     VARCHAR(50)  NOT NULL UNIQUE,
         PASSWORD      VARCHAR(255) NOT NULL,
-        PREMIUM       BOOLEAN      NOT NULL,
-        ROLE_ID       INT REFERENCES role (ID)
+        ROLE          VARCHAR(50) NOT NULL,
+        ENABLED       BOOLEAN
     )
 
 

@@ -11,10 +11,16 @@ module law.mobile.main {
     requires spring.data.jpa;
     requires spring.web;
     requires spring.beans;
+    requires spring.security.config;
+    requires spring.security.core;
+    requires spring.tx;
+    requires spring.security.oauth2.client;
+    requires spring.security.oauth2.core;
+
 
     opens com.notetakingplus.law.mobile to spring.core, spring.beans, spring.context;
     opens com.notetakingplus.law.mobile.config to spring.core, spring.beans, spring.context;
-    opens com.notetakingplus.law.mobile.service.impl to spring.beans;
+    opens com.notetakingplus.law.mobile.service.impl to spring.beans, spring.core, spring.aop;
     opens com.notetakingplus.law.mobile.controller to spring.beans, spring.web;
     //TODO could declare module 'open' but let's see which modules will require law.mobile.main open
 }

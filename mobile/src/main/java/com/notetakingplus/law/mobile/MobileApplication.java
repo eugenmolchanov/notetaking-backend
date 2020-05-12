@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@EnableJpaRepositories("com.notetakingplus.law")
+@EnableJpaRepositories("com.notetakingplus.law.common.repository")
 public class MobileApplication {
 
     public static void main(String[] args) {
