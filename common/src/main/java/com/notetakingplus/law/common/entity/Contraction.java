@@ -13,12 +13,12 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(catalog = "law", schema = "core", name = "contraction")
+@Table(name = "CONTRACTION")
 public class Contraction {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "contraction_id_seq")
-    @SequenceGenerator(catalog = "law", schema = "core", sequenceName = "contraction_id_seq", name = "contraction_id_seq")
+    @SequenceGenerator(sequenceName = "CONTRACTION_ID_SEQ", name = "contraction_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "NAME", nullable = false, length = 45)

@@ -1,16 +1,16 @@
 module law.mobile.main {
     requires spring.boot.autoconfigure;
     requires spring.context;
-    requires common;
-    requires java.persistence;
     requires spring.boot;
-
-    // java.xml.bind and net.bytebuddy are used for resolving persistence unit root URL(exception during initialization)
-    requires java.xml.bind;
-    requires net.bytebuddy;
     requires spring.data.jpa;
     requires spring.web;
     requires spring.beans;
+
+    // java.xml.bind and net.bytebuddy are used for resolving persistence unit root URL(exception during initialization)
+    requires jakarta.activation;
+
+    requires net.bytebuddy;
+    requires common;
 
     opens com.notetakingplus.law.mobile to spring.core, spring.beans, spring.context;
     opens com.notetakingplus.law.mobile.config to spring.core, spring.beans, spring.context;

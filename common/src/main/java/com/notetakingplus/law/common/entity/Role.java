@@ -9,12 +9,12 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(catalog = "law", schema = "core", name = "role")
+@Table(name = "ROLE")
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "role_id_seq")
-    @SequenceGenerator(catalog = "law", schema = "core", sequenceName = "role_id_seq", name = "role_id_seq")
+    @SequenceGenerator(sequenceName = "ROLE_ID_SEQ", name = "role_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "NAME", nullable = false, length = 45)

@@ -1,4 +1,4 @@
-insert into core.discipline (NAME, ABBREVIATION, FREE_ACCESS) values
+insert into DISCIPLINE (NAME, ABBREVIATION, FREE_ACCESS) values
 ('Гражданское процессуальное право', 'ГПП', '1'),
 ('Гражданское право', 'ГП', '1'),
 ('Уголовное право', 'УП', '1'),

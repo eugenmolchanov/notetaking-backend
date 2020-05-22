@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,12 +16,12 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(catalog = "law", schema = "core", name = "question")
+@Table(name = "QUESTION")
 public class Question {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "question_id_seq")
-    @SequenceGenerator(catalog = "law", schema = "core", sequenceName = "question_id_seq", name = "question_id_seq")
+    @SequenceGenerator(sequenceName = "QUESTION_ID_SEQ", name = "question_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "NAME", nullable = false)
@@ -32,7 +31,7 @@ public class Question {
     private Integer number;
 
     @JsonBackReference
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne(optional = false)
     @JoinColumn(name = "DISCIPLINE_ID")
     private Discipline discipline;
 
@@ -44,7 +43,7 @@ public class Question {
 
     @ManyToMany
     @JoinTable(
-            catalog = "law", schema = "core", name = "question_contraction",
+            name = "QUESTION_CONTRACTION",
             joinColumns = {@JoinColumn(name = "QUESTION_ID", referencedColumnName = "ID")},
             inverseJoinColumns = {@JoinColumn(name = "CONTRACTION_ID", referencedColumnName = "ID")}
     )

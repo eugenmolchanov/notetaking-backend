@@ -48,6 +48,7 @@ public class CommonPersistenceConfig {
             {
                 setProperty("hibernate.hbm2ddl.auto", env.getProperty("spring.jpa.hibernate.ddl-auto"));
                 setProperty("hibernate.dialect", env.getProperty("spring.jpa.properties.hibernate.dialect"));
+                setProperty("spring.jpa.hibernate.use-new-id-generator-mappings", "true");
             }
         };
     }

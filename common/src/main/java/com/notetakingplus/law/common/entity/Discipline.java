@@ -14,12 +14,12 @@ import javax.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(catalog = "law", schema = "core", name = "discipline")
+@Table(name = "DISCIPLINE")
 public class Discipline {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "discipline_id_seq")
-    @SequenceGenerator(catalog = "law", schema = "core", sequenceName = "discipline_id_seq", name = "discipline_id_seq")
+    @SequenceGenerator(sequenceName = "DISCIPLINE_ID_SEQ", name = "discipline_id_seq", allocationSize = 1)
     private Integer id;
 
     @Column(name = "NAME", nullable = false, length = 100)

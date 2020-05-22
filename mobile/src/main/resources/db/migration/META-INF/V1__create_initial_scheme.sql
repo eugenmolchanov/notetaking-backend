@@ -1,13 +1,13 @@
-CREATE SCHEMA core
+CREATE SCHEMA CORE;
 
-    CREATE TABLE role
+    CREATE TABLE ROLE
     (
         ID   SERIAL PRIMARY KEY,
         NAME VARCHAR(45) NOT NULL
-    )
+    );
 
 
-    CREATE TABLE "user"
+    CREATE TABLE "USER"
     (
         ID            SERIAL PRIMARY KEY,
         FIRST_NAME    VARCHAR(50)  NOT NULL,
@@ -17,19 +17,19 @@ CREATE SCHEMA core
         PASSWORD      VARCHAR(255) NOT NULL,
         PREMIUM       BOOLEAN      NOT NULL,
         ROLE_ID       INT REFERENCES role (ID)
-    )
+    );
 
 
-    CREATE TABLE discipline
+    CREATE TABLE DISCIPLINE
     (
         ID           SERIAL PRIMARY KEY,
         NAME         VARCHAR(100) NOT NULL,
         ABBREVIATION VARCHAR(45)  NOT NULL,
         FREE_ACCESS  BOOLEAN      NOT NULL
-    )
+    );
 
 
-    CREATE TABLE question
+    CREATE TABLE QUESTION
     (
         ID            SERIAL PRIMARY KEY,
         NAME          VARCHAR(255) NOT NULL,
@@ -38,17 +38,17 @@ CREATE SCHEMA core
         SHORT_CONTENT TEXT         NOT NULL,
         DISCIPLINE_ID INT REFERENCES discipline (ID),
         UNIQUE (NUMBER, DISCIPLINE_ID)
-    )
+    );
 
-    CREATE TABLE contraction
+    CREATE TABLE CONTRACTION
     (
         ID          SERIAL PRIMARY KEY,
         NAME        VARCHAR(45)  NOT NULL,
         DESCRIPTION VARCHAR(255) NOT NULL
-    )
+    );
 
 
-    CREATE TABLE question_contraction
+    CREATE TABLE QUESTION_CONTRACTION
     (
         QUESTION_ID    INT REFERENCES question (ID),
         CONTRACTION_ID INT REFERENCES contraction (ID)
