@@ -25,6 +25,20 @@ import static org.mockito.Mockito.verify;
 @RunWith(SpringRunner.class)
 public class DisciplineServiceTest {
 
+    @TestConfiguration
+    static class DisciplineServiceTestContextConfig {
+        @Bean
+        public DisciplineService disciplineService() {
+            return new DisciplineServiceImpl();
+        }
+    }
+
+    @Autowired
+    private DisciplineService disciplineService;
+
+    @MockBean
+    private DisciplineRepository disciplineRepository;
+
     private List<Discipline> disciplines;
     private UserDto userDto;
 
@@ -48,20 +62,6 @@ public class DisciplineServiceTest {
         userDto = new UserDto();
         Mockito.when(disciplineRepository.findAll()).thenReturn(disciplines);
     }
-
-    @TestConfiguration
-    static class DisciplineServiceTestContextConfig {
-        @Bean
-        public DisciplineService disciplineService() {
-            return new DisciplineServiceImpl();
-        }
-    }
-
-    @Autowired
-    private DisciplineService disciplineService;
-
-    @MockBean
-    private DisciplineRepository disciplineRepository;
 
     @Test
     public void getDisciplinesForPremiumUser() {

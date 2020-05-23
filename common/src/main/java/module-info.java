@@ -2,6 +2,7 @@ module common {
     exports com.notetakingplus.law.common.entity;
     exports com.notetakingplus.law.common.config;
     exports com.notetakingplus.law.common.repository;
+    exports com.notetakingplus.law.common.repository.projection;
 
     requires java.persistence;
     requires java.sql;
@@ -11,6 +12,7 @@ module common {
     requires spring.core;
     requires spring.orm;
     requires spring.data.commons;
+    requires spring.data.jpa;
 
     requires com.zaxxer.hikari;
     requires org.flywaydb.core;

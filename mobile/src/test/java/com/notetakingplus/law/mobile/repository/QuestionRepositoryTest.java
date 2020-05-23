@@ -2,9 +2,9 @@ package com.notetakingplus.law.mobile.repository;
 
 import com.notetakingplus.law.common.entity.Contraction;
 import com.notetakingplus.law.common.entity.Question;
+import com.notetakingplus.law.common.repository.projection.QuestionOverviewProjection;
 import com.notetakingplus.law.common.repository.QuestionRepository;
 import com.notetakingplus.law.mobile.config.TestJpaPersistenceConfig;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
 @RunWith(SpringRunner.class)
@@ -26,7 +27,7 @@ public class QuestionRepositoryTest {
 
     @Test
     public void questionsTest() {
-        Assertions.assertThat(questionRepository.count()).isEqualTo(4);
+        assertThat(questionRepository.count()).isEqualTo(4);
     }
 
     @Test
@@ -45,5 +46,12 @@ public class QuestionRepositoryTest {
             softly.assertThat(contractions).isNotEmpty();
             softly.assertThat(contractions.get(0).getName()).isEqualTo("Г");
         });
+    }
+
+    @Test
+    public void getQuestionsByDiscipline() {
+        List<QuestionOverviewProjection> questions = questionRepository.findByDisciplineId(3);
+        assertThat(questions).isNotEmpty();
+        assertThat(questions.size()).isEqualTo(4);
     }
 }
