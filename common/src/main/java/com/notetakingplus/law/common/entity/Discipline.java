@@ -60,7 +60,7 @@ public class Discipline {
     }
 
     @JsonProperty(value = "isFree")
-    public Boolean getFree() {
+    public Boolean isFree() {
         return isFree;
     }
 

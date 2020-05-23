@@ -10,6 +10,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.SoftAssertions.assertSoftly;
 
@@ -32,7 +34,24 @@ public class DisciplineRepositoryTest {
         assertSoftly(softly -> {
             softly.assertThat(discipline.getName()).isEqualTo("Уголовное право");
             softly.assertThat(discipline.getAbbreviation()).isEqualTo("УП");
-            softly.assertThat(discipline.getFree()).isTrue();
+            softly.assertThat(discipline.isFree()).isTrue();
         });
+    }
+
+    @Test
+    public void getFreeDisciplines() {
+        List<Discipline> disciplines = disciplineRepository.findByIsFree(true);
+        assertThat(disciplines).isNotNull();
+        assertThat(disciplines).isNotEmpty();
+        assertThat(disciplines.size()).isEqualTo(5);
+    }
+
+    @Test
+    public void getPremiumDisciplines() {
+        List<Discipline> disciplines = disciplineRepository.findByIsFree(false);
+        assertThat(disciplines).isNotNull();
+        assertThat(disciplines).isNotEmpty();
+        assertThat(disciplines.size()).isEqualTo(1);
+        assertThat(disciplines.get(0).getName()).isEqualTo("Уголовное процессуальное право");
     }
 }
