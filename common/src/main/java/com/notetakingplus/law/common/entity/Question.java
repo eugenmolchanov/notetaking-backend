@@ -1,6 +1,6 @@
 package com.notetakingplus.law.common.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -17,6 +17,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "QUESTION")
+@Data
 public class Question {
 
     @Id
@@ -30,7 +31,6 @@ public class Question {
     @Column(name = "NUMBER", nullable = false)
     private Integer number;
 
-    @JsonBackReference
     @ManyToOne(optional = false)
     @JoinColumn(name = "DISCIPLINE_ID")
     private Discipline discipline;
@@ -48,60 +48,4 @@ public class Question {
             inverseJoinColumns = {@JoinColumn(name = "CONTRACTION_ID", referencedColumnName = "ID")}
     )
     private List<Contraction> contractions;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-    public Discipline getDiscipline() {
-        return discipline;
-    }
-
-    public void setDiscipline(Discipline discipline) {
-        this.discipline = discipline;
-    }
-
-    public String getFullContent() {
-        return fullContent;
-    }
-
-    public void setFullContent(String fullContent) {
-        this.fullContent = fullContent;
-    }
-
-    public String getShortContent() {
-        return shortContent;
-    }
-
-    public void setShortContent(String shortContent) {
-        this.shortContent = shortContent;
-    }
-
-    public List<Contraction> getContractions() {
-        return contractions;
-    }
-
-    public void setContractions(List<Contraction> contractions) {
-        this.contractions = contractions;
-    }
 }

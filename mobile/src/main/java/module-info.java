@@ -11,6 +11,7 @@ module law.mobile.main {
 
     requires net.bytebuddy;
     requires common;
+    requires lombok;
 
     opens com.notetakingplus.law.mobile to spring.core, spring.beans, spring.context;
     opens com.notetakingplus.law.mobile.config to spring.core, spring.beans, spring.context;

@@ -1,6 +1,6 @@
 package com.notetakingplus.law.common.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +14,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "CONTRACTION")
+@Data
 public class Contraction {
 
     @Id
@@ -27,39 +28,6 @@ public class Contraction {
     @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    @JsonBackReference
     @ManyToMany(mappedBy = "contractions")
     private List<Question> questions;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<Question> getQuestions() {
-        return questions;
-    }
-
-    public void setQuestions(List<Question> questions) {
-        this.questions = questions;
-    }
 }

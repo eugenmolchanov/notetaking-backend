@@ -30,7 +30,7 @@ public class DisciplineServiceImpl implements DisciplineService {
         disciplineDto.setId(discipline.getId());
         disciplineDto.setName(discipline.getName());
         disciplineDto.setAbbreviation(discipline.getAbbreviation());
-        disciplineDto.setAvailable(discipline.isFree() || userDto.isPremium());
+        disciplineDto.setAvailable(discipline.getIsFree() || userDto.isPremium());
         return disciplineDto;
     }
 }

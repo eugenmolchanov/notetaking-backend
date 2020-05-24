@@ -16,7 +16,7 @@ module common {
 
     requires com.zaxxer.hikari;
     requires org.flywaydb.core;
-    requires jackson.annotations;
+    requires lombok;
 
     opens com.notetakingplus.law.common.entity to org.hibernate.orm.core, spring.core;
     opens com.notetakingplus.law.common.config to spring.core;

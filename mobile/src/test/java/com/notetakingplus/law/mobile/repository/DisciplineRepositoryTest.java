@@ -34,7 +34,7 @@ public class DisciplineRepositoryTest {
         assertSoftly(softly -> {
             softly.assertThat(discipline.getName()).isEqualTo("Уголовное право");
             softly.assertThat(discipline.getAbbreviation()).isEqualTo("УП");
-            softly.assertThat(discipline.isFree()).isTrue();
+            softly.assertThat(discipline.getIsFree()).isTrue();
         });
     }
 

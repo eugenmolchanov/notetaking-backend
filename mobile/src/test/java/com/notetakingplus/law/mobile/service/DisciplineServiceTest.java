@@ -49,13 +49,13 @@ public class DisciplineServiceTest {
         premiumDiscipline.setId(1);
         premiumDiscipline.setName("Premium");
         premiumDiscipline.setAbbreviation("PR");
-        premiumDiscipline.setFree(false);
+        premiumDiscipline.setIsFree(false);
 
         Discipline freeDiscipline = new Discipline();
         freeDiscipline.setId(2);
         freeDiscipline.setName("Free");
         freeDiscipline.setAbbreviation("FR");
-        freeDiscipline.setFree(true);
+        freeDiscipline.setIsFree(true);
 
         disciplines.addAll(List.of(premiumDiscipline, freeDiscipline));
 
@@ -76,7 +76,7 @@ public class DisciplineServiceTest {
 
     @Test
     public void getDisciplinesForNonPremiumUser() {
-        List<Discipline> freeDisciplines = disciplines.stream().filter(Discipline::isFree).collect(Collectors.toList());
+        List<Discipline> freeDisciplines = disciplines.stream().filter(Discipline::getIsFree).collect(Collectors.toList());
         Mockito.when(disciplineRepository.findByIsFree(true)).thenReturn(freeDisciplines);
 
         List<DisciplineDto> disciplines = disciplineService.getDisciplines(userDto);
