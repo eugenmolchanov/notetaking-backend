@@ -6,10 +6,6 @@ module law.mobile.main {
     requires spring.web;
     requires spring.beans;
 
-    // java.xml.bind and net.bytebuddy are used for resolving persistence unit root URL(exception during initialization)
-    requires jakarta.activation;
-
-    requires net.bytebuddy;
     requires common;
     requires lombok;
 

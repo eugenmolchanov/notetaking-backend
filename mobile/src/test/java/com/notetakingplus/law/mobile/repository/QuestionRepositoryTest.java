@@ -54,4 +54,18 @@ public class QuestionRepositoryTest {
         assertThat(questions).isNotEmpty();
         assertThat(questions.size()).isEqualTo(4);
     }
+
+    @Test
+    public void getQuestionDetailsTest() {
+        Question question = questionRepository.findById(1).get();
+
+        assertSoftly(softly -> {
+            softly.assertThat(question).isNotNull();
+            softly.assertThat(question.getFullContent())
+                    .startsWith("<h4>Побои (ст. 116)</h4><div><strong>Множественное нанесение ударов</strong>, если ");
+            softly.assertThat(question.getShortContent()).isEqualTo("SHORT CONTENT");
+            softly.assertThat(question.getContractions()).isNotEmpty();
+            softly.assertThat(question.getContractions().size()).isEqualTo(7);
+        });
+    }
 }
