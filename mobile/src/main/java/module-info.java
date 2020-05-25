@@ -8,6 +8,7 @@ module law.mobile.main {
 
     requires common;
     requires lombok;
+    requires com.fasterxml.jackson.annotation;
 
     opens com.notetakingplus.law.mobile to spring.core, spring.beans, spring.context;
     opens com.notetakingplus.law.mobile.config to spring.core, spring.beans, spring.context;

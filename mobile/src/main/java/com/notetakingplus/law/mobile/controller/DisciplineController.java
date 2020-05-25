@@ -12,14 +12,10 @@ import java.util.List;
 @RestController
 public class DisciplineController {
 
+    @Autowired
     private DisciplineService disciplineService;
 
-    @Autowired
-    public DisciplineController(DisciplineService disciplineService) {
-        this.disciplineService = disciplineService;
-    }
-
-    @GetMapping(value = "/disciplines/access/free")
+    @GetMapping(value = "/disciplines")
     public List<DisciplineDto> getDisciplines() {
         return disciplineService.getDisciplines(new UserDto());
     }
