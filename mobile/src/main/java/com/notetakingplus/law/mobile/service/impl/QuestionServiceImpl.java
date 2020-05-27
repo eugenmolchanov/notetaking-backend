@@ -1,11 +1,11 @@
 package com.notetakingplus.law.mobile.service.impl;
 
 import com.notetakingplus.law.common.entity.Contraction;
-import com.notetakingplus.law.common.entity.Discipline;
 import com.notetakingplus.law.common.entity.Question;
 import com.notetakingplus.law.common.repository.QuestionRepository;
 import com.notetakingplus.law.common.repository.projection.QuestionOverviewProjection;
 import com.notetakingplus.law.mobile.dto.ContractionDto;
+import com.notetakingplus.law.mobile.dto.DisciplineDto;
 import com.notetakingplus.law.mobile.dto.QuestionDto;
 import com.notetakingplus.law.mobile.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +24,8 @@ public class QuestionServiceImpl implements QuestionService {
     private QuestionRepository questionRepository;
 
     @Override
-    public List<QuestionDto> findQuestions(Discipline discipline) {
-        List<QuestionOverviewProjection> questions = questionRepository.findByDisciplineId(discipline.getId());
+    public List<QuestionDto> findQuestionOverviews(DisciplineDto disciplineDto) {
+        List<QuestionOverviewProjection> questions = questionRepository.findByDisciplineId(disciplineDto.getId());
         return questions.stream()
                 .map(this::questionOverviewDto)
                 .collect(toList());
@@ -42,6 +42,7 @@ public class QuestionServiceImpl implements QuestionService {
         questionDto.setId(question.getId());
         questionDto.setName(question.getName());
         questionDto.setNumber(question.getNumber());
+        questionDto.setContractions(emptyList());
         return questionDto;
     }
 

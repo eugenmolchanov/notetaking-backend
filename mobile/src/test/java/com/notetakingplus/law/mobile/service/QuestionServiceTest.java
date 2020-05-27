@@ -1,17 +1,15 @@
 package com.notetakingplus.law.mobile.service;
 
 import com.notetakingplus.law.common.entity.Contraction;
-import com.notetakingplus.law.common.entity.Discipline;
 import com.notetakingplus.law.common.entity.Question;
 import com.notetakingplus.law.common.repository.QuestionRepository;
 import com.notetakingplus.law.common.repository.projection.QuestionOverviewProjection;
 import com.notetakingplus.law.mobile.dto.ContractionDto;
+import com.notetakingplus.law.mobile.dto.DisciplineDto;
 import com.notetakingplus.law.mobile.dto.QuestionDto;
 import com.notetakingplus.law.mobile.service.impl.QuestionServiceImpl;
-import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -53,9 +51,9 @@ public class QuestionServiceTest {
         List<QuestionOverviewProjection> questions = List.of(firstQuestion, secondQuestion, thirdQuestion);
         when(questionRepository.findByDisciplineId(anyInt())).thenReturn(questions);
 
-        Discipline discipline = new Discipline();
-        discipline.setId(1);
-        List<QuestionDto> questionDtos = questionService.findQuestions(discipline);
+        DisciplineDto disciplineDto = new DisciplineDto();
+        disciplineDto.setId(1);
+        List<QuestionDto> questionDtos = questionService.findQuestionOverviews(disciplineDto);
 
         verify(questionRepository).findByDisciplineId(1);
         assertThat(questionDtos).isNotEmpty();
@@ -65,6 +63,9 @@ public class QuestionServiceTest {
         assertThat(question.getId()).isEqualTo(2);
         assertThat(question.getName()).isEqualTo("second");
         assertThat(question.getNumber()).isEqualTo(2);
+        assertThat(question.getFullContent()).isNull();
+        assertThat(question.getShortContent()).isNull();
+        assertThat(question.getContractions()).isEmpty();
     }
 
     @Test
