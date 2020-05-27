@@ -18,6 +18,11 @@ module common {
     requires org.flywaydb.core;
     requires lombok;
 
+    requires springfox.swagger2;
+    requires springfox.spring.web;
+    requires springfox.spi;
+    requires springfox.core;
+
     opens com.notetakingplus.law.common.entity to org.hibernate.orm.core, spring.core;
     opens com.notetakingplus.law.common.config to spring.core;
 }
