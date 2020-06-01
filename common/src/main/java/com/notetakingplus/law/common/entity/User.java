@@ -37,9 +37,6 @@ public class User {
     @Column(name = "PASSWORD", nullable = false)
     private String password;
 
-    @Column(name = "PREMIUM", nullable = false)
-    private Boolean isPremium;
-
     @ManyToOne(optional = false)
     @JoinColumn(name = "ROLE_ID")
     private Role role;

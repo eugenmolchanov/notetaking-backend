@@ -25,6 +25,7 @@
         <java.version>11</java.version>
         <maven.compiler.plugin>3.8.1</maven.compiler.plugin>
         <lombok.version>1.18.12</lombok.version>
+        <json.webtoken.version>0.9.1</json.webtoken.version>
     </properties>
 
     <dependencyManagement>
@@ -34,6 +35,11 @@
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
                 <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${json.webtoken.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
