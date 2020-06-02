@@ -1,4 +1,4 @@
-insert into USER (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, USER_NAME, PASSWORD, ROLE_ID) VALUES
-('Luke', 'Skywalker', 'luke.skywalker.student@gmail.com', 'luke', 'password', select ID from ROLE where NAME = 'User with subscription'),
-('Luke', 'Skywalker', 'luke.skywalker.student@gmail.com', 'luke', 'password', select ID from ROLE where NAME = 'User'),
-('Master', 'Yoda', 'master.yoda.mentor@gmail.com')
+insert into USER (FIRST_NAME, LAST_NAME, EMAIL_ADDRESS, PASSWORD, ROLE_ID) VALUES
+('Yauhen', 'Malchanau', 'yauhenmalchanau@gmail.com', 'password', select ID from ROLE where NAME = 'User'),
+('Luke', 'Skywalker', 'luke.skywalker.student@gmail.com', 'password', select ID from ROLE where NAME = 'User with subscription'),
+('Master', 'Yoda', 'master.yoda.mentor@gmail.com', 'password', select ID from ROLE where NAME = 'Admin');

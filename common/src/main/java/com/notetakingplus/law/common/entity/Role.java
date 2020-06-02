@@ -20,6 +20,6 @@ public class Role {
     @SequenceGenerator(sequenceName = "ROLE_ID_SEQ", name = "role_id_seq", allocationSize = 1)
     private Integer id;
 
-    @Column(name = "NAME", nullable = false, length = 45)
+    @Column(name = "NAME", nullable = false, unique = true, length = 45)
     private String name;
 }

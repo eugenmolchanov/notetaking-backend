@@ -13,7 +13,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "\"USER\"")
+@Table(name = "USER")
 @Data
 public class User {
 
@@ -30,9 +30,6 @@ public class User {
 
     @Column(name = "EMAIL_ADDRESS", nullable = false, unique = true)
     private String emailAddress;
-
-    @Column(name = "USER_NAME", nullable = false, unique = true, length = 50)
-    private String userName;
 
     @Column(name = "PASSWORD", nullable = false)
     private String password;
