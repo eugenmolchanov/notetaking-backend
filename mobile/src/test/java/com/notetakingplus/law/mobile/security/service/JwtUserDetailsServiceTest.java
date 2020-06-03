@@ -1,9 +1,9 @@
-package com.notetakingplus.law.mobile.service;
+package com.notetakingplus.law.mobile.security.service;
 
 import com.notetakingplus.law.common.entity.Role;
 import com.notetakingplus.law.common.entity.User;
 import com.notetakingplus.law.common.repository.UserRepository;
-import com.notetakingplus.law.mobile.service.impl.UserDetailsServiceImpl;
+import com.notetakingplus.law.mobile.security.service.impl.UserDetailsServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

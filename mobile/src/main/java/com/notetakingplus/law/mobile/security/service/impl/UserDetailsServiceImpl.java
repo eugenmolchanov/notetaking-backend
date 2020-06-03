@@ -1,4 +1,4 @@
-package com.notetakingplus.law.mobile.service.impl;
+package com.notetakingplus.law.mobile.security.service.impl;
 
 import com.notetakingplus.law.common.entity.User;
 import com.notetakingplus.law.common.repository.UserRepository;

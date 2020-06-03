@@ -6,10 +6,13 @@ module law.mobile.main {
     requires spring.web;
     requires spring.beans;
     requires spring.security.core;
+    requires spring.security.web;
 
     requires common;
     requires lombok;
     requires com.fasterxml.jackson.annotation;
+    requires jjwt;
+    requires org.apache.tomcat.embed.core;
 
     opens com.notetakingplus.law.mobile to spring.core, spring.beans, spring.context;
     opens com.notetakingplus.law.mobile.config to spring.core, spring.beans, spring.context;
