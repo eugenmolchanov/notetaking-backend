@@ -1,7 +1,8 @@
-package com.notetakingplus.law.mobile.security.controller;
+package com.notetakingplus.law.mobile.unit.security.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.notetakingplus.law.mobile.config.TestAuthConfig;
+import com.notetakingplus.law.mobile.security.controller.AuthenticationController;
 import com.notetakingplus.law.mobile.security.dto.AuthenticationRequestDto;
 import org.junit.Test;
 import org.junit.runner.RunWith;

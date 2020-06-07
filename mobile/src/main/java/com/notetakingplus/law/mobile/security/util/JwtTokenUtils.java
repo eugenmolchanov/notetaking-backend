@@ -4,12 +4,9 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,7 +22,7 @@ public class JwtTokenUtils {
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-        claims.put("role", role(userDetails));
+        claims.put("role", UserDetailsUtils.role(userDetails.getAuthorities()));
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())
@@ -55,16 +52,5 @@ public class JwtTokenUtils {
 
     private long currentTimeMillis() {
         return System.currentTimeMillis();
-    }
-
-    private String role(UserDetails userDetails) {
-        Collection<? extends GrantedAuthority> authorities = userDetails.getAuthorities();
-        if (authorities.contains(new SimpleGrantedAuthority("Admin"))) {
-            return "Admin";
-        } else if (authorities.contains(new SimpleGrantedAuthority("User with subscription"))) {
-            return "User with subscription";
-        } else {
-            return "User";
-        }
     }
 }

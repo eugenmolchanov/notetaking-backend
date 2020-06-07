@@ -1,9 +1,10 @@
-package com.notetakingplus.law.mobile.service;
+package com.notetakingplus.law.mobile.unit.service;
 
 import com.notetakingplus.law.common.entity.Discipline;
 import com.notetakingplus.law.common.repository.DisciplineRepository;
 import com.notetakingplus.law.mobile.dto.DisciplineDto;
 import com.notetakingplus.law.mobile.dto.UserDto;
+import com.notetakingplus.law.mobile.service.DisciplineService;
 import com.notetakingplus.law.mobile.service.impl.DisciplineServiceImpl;
 import org.junit.Before;
 import org.junit.Test;

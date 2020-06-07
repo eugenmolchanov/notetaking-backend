@@ -1,5 +1,6 @@
-package com.notetakingplus.law.mobile.controller;
+package com.notetakingplus.law.mobile.unit.controller;
 
+import com.notetakingplus.law.mobile.controller.DisciplineController;
 import com.notetakingplus.law.mobile.dto.DisciplineDto;
 import com.notetakingplus.law.mobile.dto.UserDto;
 import com.notetakingplus.law.mobile.security.config.AuthEntryPoint;

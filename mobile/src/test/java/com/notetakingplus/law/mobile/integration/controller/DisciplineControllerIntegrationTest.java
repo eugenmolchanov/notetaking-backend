@@ -1,4 +1,4 @@
-package com.notetakingplus.law.mobile.controller.integration;
+package com.notetakingplus.law.mobile.integration.controller;
 
 import com.notetakingplus.law.mobile.config.TestJpaPersistenceConfig;
 import com.notetakingplus.law.mobile.security.util.JwtTokenUtils;

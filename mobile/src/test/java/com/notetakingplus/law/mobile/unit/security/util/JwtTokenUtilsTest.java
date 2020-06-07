@@ -1,5 +1,6 @@
-package com.notetakingplus.law.mobile.security.util;
+package com.notetakingplus.law.mobile.unit.security.util;
 
+import com.notetakingplus.law.mobile.security.util.JwtTokenUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

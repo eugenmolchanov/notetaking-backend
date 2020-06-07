@@ -1,4 +1,4 @@
-package com.notetakingplus.law.mobile.security.service;
+package com.notetakingplus.law.mobile.unit.security.service;
 
 import com.notetakingplus.law.common.entity.Role;
 import com.notetakingplus.law.common.entity.User;

@@ -1,4 +1,4 @@
-package com.notetakingplus.law.mobile.repository;
+package com.notetakingplus.law.mobile.unit.repository;
 
 import com.notetakingplus.law.common.entity.Contraction;
 import com.notetakingplus.law.common.repository.ContractionRepository;

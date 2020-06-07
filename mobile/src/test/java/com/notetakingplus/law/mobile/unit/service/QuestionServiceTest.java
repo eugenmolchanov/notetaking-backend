@@ -1,4 +1,4 @@
-package com.notetakingplus.law.mobile.service;
+package com.notetakingplus.law.mobile.unit.service;
 
 import com.notetakingplus.law.common.entity.Contraction;
 import com.notetakingplus.law.common.entity.Question;
@@ -7,6 +7,7 @@ import com.notetakingplus.law.common.repository.projection.QuestionOverviewProje
 import com.notetakingplus.law.mobile.dto.ContractionDto;
 import com.notetakingplus.law.mobile.dto.DisciplineDto;
 import com.notetakingplus.law.mobile.dto.QuestionDto;
+import com.notetakingplus.law.mobile.service.QuestionService;
 import com.notetakingplus.law.mobile.service.impl.QuestionServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;

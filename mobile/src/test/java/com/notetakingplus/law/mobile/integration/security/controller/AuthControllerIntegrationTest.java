@@ -1,4 +1,4 @@
-package com.notetakingplus.law.mobile.security.controller.integration;
+package com.notetakingplus.law.mobile.integration.security.controller;
 
 import com.notetakingplus.law.mobile.config.TestJpaPersistenceConfig;
 import com.notetakingplus.law.mobile.security.dto.AuthenticationRequestDto;
