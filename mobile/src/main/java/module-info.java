@@ -7,6 +7,7 @@ module law.mobile.main {
     requires spring.beans;
     requires spring.security.core;
     requires spring.security.web;
+    requires spring.security.config;
 
     requires common;
     requires lombok;

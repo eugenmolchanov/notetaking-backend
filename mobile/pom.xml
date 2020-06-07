@@ -18,6 +18,7 @@
         <maven.compiler.target>${java.version}</maven.compiler.target>
         <law.common.version>1.0-SNAPSHOT</law.common.version>
         <maven.surefire.plugin.version>2.20</maven.surefire.plugin.version>
+        <spring.security.test.version>5.3.3.RELEASE</spring.security.test.version>
     </properties>
 
     <dependencies>
@@ -41,6 +42,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
+            <version>${spring.security.test.version}</version>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>

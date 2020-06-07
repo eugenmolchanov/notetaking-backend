@@ -16,7 +16,7 @@ import java.util.Map;
 import java.util.function.Function;
 
 @Component
-public final class JwtTokenUtils {
+public class JwtTokenUtils {
 
     @Value("${jwt.secret}")
     private String secret;
@@ -49,7 +49,7 @@ public final class JwtTokenUtils {
     }
 
     private <T> T claim(String token, Function<Claims, T> claim) {
-        Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJwt(token).getBody();
+        Claims claims = Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
         return claim.apply(claims);
     }
 

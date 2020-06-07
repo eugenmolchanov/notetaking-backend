@@ -8,6 +8,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
@@ -29,8 +31,15 @@ public class JwtTokenUtilsTest {
 
     @Test
     public void generateTokenTest() {
-        UserDetails userDetails = new User("some@gmail.com", "password", List.of(new SimpleGrantedAuthority("User")));
+        UserDetails userDetails = new User("yauhenmalchanau@gmail.com", "password", List.of(new SimpleGrantedAuthority("User")));
         String jwtToken = jwtTokenUtils.generateToken(userDetails);
         System.out.println("Token is " + jwtToken);
+    }
+
+    @Test
+    public void generateEncryptedPassword() {
+        PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String encodedPassword = passwordEncoder.encode("password");
+        System.out.println("Password is " + encodedPassword);
     }
 }

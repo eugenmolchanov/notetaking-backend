@@ -7,7 +7,7 @@ CREATE SCHEMA CORE;
     );
 
 
-    CREATE TABLE "USER"
+    CREATE TABLE USERS
     (
         ID            SERIAL PRIMARY KEY,
         FIRST_NAME    VARCHAR(50)  NOT NULL,

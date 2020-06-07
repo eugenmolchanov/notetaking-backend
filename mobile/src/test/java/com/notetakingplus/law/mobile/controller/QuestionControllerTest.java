@@ -3,6 +3,9 @@ package com.notetakingplus.law.mobile.controller;
 import com.notetakingplus.law.mobile.dto.ContractionDto;
 import com.notetakingplus.law.mobile.dto.DisciplineDto;
 import com.notetakingplus.law.mobile.dto.QuestionDto;
+import com.notetakingplus.law.mobile.security.config.AuthEntryPoint;
+import com.notetakingplus.law.mobile.security.service.impl.UserDetailsServiceImpl;
+import com.notetakingplus.law.mobile.security.util.JwtTokenUtils;
 import com.notetakingplus.law.mobile.service.QuestionService;
 import org.hamcrest.Matchers;
 import org.junit.Before;
@@ -11,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -29,6 +33,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(QuestionController.class)
+@MockBean(classes = {AuthEntryPoint.class, JwtTokenUtils.class, UserDetailsServiceImpl.class})
+@WithMockUser(value = "spring")
 public class QuestionControllerTest {
 
     @Autowired

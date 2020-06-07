@@ -1,0 +1,1 @@
+update USERS set PASSWORD = '$2a$10$j1YVYQri7QTVyMOoa.IWletxT55Yy6V07cgdIWyZVLPk./YuBY.WG';
