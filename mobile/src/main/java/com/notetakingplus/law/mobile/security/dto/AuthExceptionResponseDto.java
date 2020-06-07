@@ -2,10 +2,12 @@ package com.notetakingplus.law.mobile.security.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class JwtResponseDto {
+@NoArgsConstructor
+public class AuthExceptionResponseDto {
 
-    private String jwtToken;
+    private String message;
 }

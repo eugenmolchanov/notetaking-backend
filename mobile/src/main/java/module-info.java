@@ -12,6 +12,7 @@ module law.mobile.main {
     requires common;
     requires lombok;
     requires com.fasterxml.jackson.annotation;
+    requires com.fasterxml.jackson.databind;
     requires jjwt;
     requires org.apache.tomcat.embed.core;
 
