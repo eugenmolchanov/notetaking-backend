@@ -9,8 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.Optional;
@@ -24,8 +22,6 @@ public class UserRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
-
-    private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Test
     public void getByEmailAddressAndPasswordTest() {
