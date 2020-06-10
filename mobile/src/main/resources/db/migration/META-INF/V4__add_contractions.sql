@@ -1,11 +1,11 @@
-insert into CONTRACTION (NAME, DESCRIPTION)
-values ('Г', 'Государство'),
-       ('П', 'Преступление'),
-       ('Л', 'Лицо'),
-       ('Ж', 'Жизнь'),
-       ('З', 'Здоровье'),
-       ('ОМСУ', 'Органы местного самоуправления'),
-       ('ПСЗИ', 'Права, Свободы, Законные интересы');
+insert into CONTRACTION (ID, NAME, DESCRIPTION)
+values (nextval('CONTRACTION_ID_SEQ'), 'Г', 'Государство'),
+       (nextval('CONTRACTION_ID_SEQ'), 'П', 'Преступление'),
+       (nextval('CONTRACTION_ID_SEQ'), 'Л', 'Лицо'),
+       (nextval('CONTRACTION_ID_SEQ'), 'Ж', 'Жизнь'),
+       (nextval('CONTRACTION_ID_SEQ'), 'З', 'Здоровье'),
+       (nextval('CONTRACTION_ID_SEQ'), 'ОМСУ', 'Органы местного самоуправления'),
+       (nextval('CONTRACTION_ID_SEQ'), 'ПСЗИ', 'Права, Свободы, Законные интересы');
 
 insert into QUESTION_CONTRACTION values
 ((select id from QUESTION where name = 'Преступления, ставящие в опасность жизнь и здоровье. Общая характеристика.'),
