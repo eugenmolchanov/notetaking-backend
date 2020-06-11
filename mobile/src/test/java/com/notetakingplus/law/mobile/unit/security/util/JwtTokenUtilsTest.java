@@ -1,5 +1,6 @@
 package com.notetakingplus.law.mobile.unit.security.util;
 
+import com.notetakingplus.law.common.entity.Role;
 import com.notetakingplus.law.mobile.security.util.JwtTokenUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -32,7 +33,7 @@ public class JwtTokenUtilsTest {
 
     @Test
     public void generateTokenTest() {
-        UserDetails userDetails = new User("yauhenmalchanau@gmail.com", "password", List.of(new SimpleGrantedAuthority("User")));
+        UserDetails userDetails = new User("yauhenmalchanau@gmail.com", "password", List.of(new SimpleGrantedAuthority(Role.USER.getName())));
         String jwtToken = jwtTokenUtils.generateToken(userDetails);
         System.out.println("Token is " + jwtToken);
     }

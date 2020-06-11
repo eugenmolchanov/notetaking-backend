@@ -12,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-import static com.notetakingplus.law.mobile.security.util.UserDetailsUtils.ADMIN_ROLE;
-import static com.notetakingplus.law.mobile.security.util.UserDetailsUtils.PREMIUM_USER;
-
 @RestController
 @RequestMapping(value = "/disciplines")
 public class DisciplineController {
@@ -28,7 +25,8 @@ public class DisciplineController {
     }
 
     private UserDto userDto(Authentication authentication) {
-        String role = UserDetailsUtils.role(authentication.getAuthorities());
-        return new UserDto(ADMIN_ROLE.equals(role) || PREMIUM_USER.equals(role));
+        UserDto userDto = new UserDto();
+        userDto.setPremium(UserDetailsUtils.isPremium(authentication));
+        return userDto;
     }
 }

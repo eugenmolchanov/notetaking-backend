@@ -46,10 +46,7 @@ public class JwtUserDetailsServiceTest {
         user.setFirstName("first name");
         user.setLastName("last name");
         user.setPassword("password");
-        Role role = new Role();
-        role.setId(1);
-        role.setName("User");
-        user.setRole(role);
+        user.setRole(Role.USER);
 
         Mockito.when(userRepository.findByEmailAddress(anyString())).thenReturn(Optional.of(user));
 

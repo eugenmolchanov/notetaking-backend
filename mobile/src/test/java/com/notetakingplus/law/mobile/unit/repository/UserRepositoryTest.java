@@ -1,7 +1,7 @@
 package com.notetakingplus.law.mobile.unit.repository;
 
+import com.notetakingplus.law.common.entity.Role;
 import com.notetakingplus.law.common.entity.User;
-import com.notetakingplus.law.common.repository.RoleRepository;
 import com.notetakingplus.law.common.repository.UserRepository;
 import com.notetakingplus.law.mobile.config.TestJpaPersistenceConfig;
 import org.junit.Test;
@@ -26,9 +26,6 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
     private TestEntityManager testEntityManager;
 
     @Test
@@ -42,7 +39,7 @@ public class UserRepositoryTest {
             softly.assertThat(user.getEmailAddress()).isEqualTo("yauhenmalchanau@gmail.com");
             softly.assertThat(user.getFirstName()).isEqualTo("Yauhen");
             softly.assertThat(user.getLastName()).isEqualTo("Malchanau");
-            softly.assertThat(user.getRole().getName()).isEqualTo("User");
+            softly.assertThat(user.getRole()).isEqualTo(Role.USER);
         });
     }
 
@@ -60,7 +57,7 @@ public class UserRepositoryTest {
         user.setLastName("bar");
         user.setEmailAddress("foo@gmail.com");
         user.setPassword("password");
-        user.setRole(roleRepository.findByName("User").get());
+        user.setRole(Role.USER);
 
         User savedUser = userRepository.save(user);
         testEntityManager.flush();
@@ -72,9 +69,11 @@ public class UserRepositoryTest {
             softly.assertThat(userOptional).isPresent();
 
             User foundUser = userOptional.get();
+            softly.assertThat(foundUser.getId()).isNotNull();
             softly.assertThat(foundUser.getFirstName()).isEqualTo(user.getFirstName());
             softly.assertThat(foundUser.getLastName()).isEqualTo(user.getLastName());
             softly.assertThat(foundUser.getPassword()).isEqualTo(user.getPassword());
+            softly.assertThat(foundUser.getRole()).isEqualTo(Role.USER);
         });
     }
 }
