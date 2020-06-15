@@ -5,5 +5,5 @@ import com.notetakingplus.law.mobile.dto.UserDto;
 
 public interface UserService {
 
-    UserDto registerUser(RegistrationDto registrationDto);
+    UserDto signUp(RegistrationDto registrationDto);
 }

@@ -39,7 +39,7 @@ public class AuthControllerIntegrationTest {
     public void authenticateFail() {
         webTestClient.post().uri("authenticate")
                 .contentType(MediaType.APPLICATION_JSON)
-                .body(Mono.just(new AuthenticationRequestDto("some@gmail.com", "password")), AuthenticationRequestDto.class)
+                .body(Mono.just(new AuthenticationRequestDto("some0@gmail.com", "password")), AuthenticationRequestDto.class)
                 .exchange()
                 .expectStatus().isUnauthorized();
     }

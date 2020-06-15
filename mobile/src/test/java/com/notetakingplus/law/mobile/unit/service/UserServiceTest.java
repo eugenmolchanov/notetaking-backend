@@ -67,7 +67,7 @@ public class UserServiceTest {
 
         Mockito.when(userRepository.save(any(User.class))).thenReturn(savedUser);
 
-        UserDto userDto = userService.registerUser(registrationDto);
+        UserDto userDto = userService.signUp(registrationDto);
 
         verify(userRepository).save(any(User.class));
         verifyNoMoreInteractions(userRepository);

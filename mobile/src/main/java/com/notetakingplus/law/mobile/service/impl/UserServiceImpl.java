@@ -20,7 +20,7 @@ public class UserServiceImpl implements UserService {
     private PasswordEncoder passwordEncoder;
 
     @Override
-    public UserDto registerUser(RegistrationDto registrationDto) {
+    public UserDto signUp(RegistrationDto registrationDto) {
         User user = new User();
         user.setFirstName(registrationDto.getFirstName());
         user.setLastName(registrationDto.getLastName());
