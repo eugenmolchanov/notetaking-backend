@@ -6,10 +6,10 @@ import com.notetakingplus.law.common.repository.UserRepository;
 import com.notetakingplus.law.mobile.dto.RegistrationDto;
 import com.notetakingplus.law.mobile.dto.UserDto;
 import com.notetakingplus.law.mobile.service.UserService;
+import com.notetakingplus.law.mobile.service.exception.UserAlreadyExistException;
 import com.notetakingplus.law.mobile.service.impl.UserServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -22,6 +22,7 @@ import static org.assertj.core.api.SoftAssertions.assertSoftly;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.verifyNoMoreInteractions;
+import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 public class UserServiceTest {
@@ -49,7 +50,7 @@ public class UserServiceTest {
     private UserRepository userRepository;
 
     @Test
-    public void registerUserTest() {
+    public void registerUserTest() throws UserAlreadyExistException {
         RegistrationDto registrationDto = new RegistrationDto();
         registrationDto.setFirstName("firstName");
         registrationDto.setLastName("lastName");
@@ -65,7 +66,7 @@ public class UserServiceTest {
         savedUser.setRole(Role.USER);
 
 
-        Mockito.when(userRepository.save(any(User.class))).thenReturn(savedUser);
+        when(userRepository.save(any(User.class))).thenReturn(savedUser);
 
         UserDto userDto = userService.signUp(registrationDto);
 

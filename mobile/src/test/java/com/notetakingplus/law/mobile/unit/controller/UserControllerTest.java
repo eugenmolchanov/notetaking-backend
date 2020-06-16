@@ -9,6 +9,7 @@ import com.notetakingplus.law.mobile.security.service.impl.UserDetailsServiceImp
 import com.notetakingplus.law.mobile.security.util.JwtTokenUtils;
 import com.notetakingplus.law.mobile.service.UserService;
 import org.hamcrest.Matchers;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.BDDMockito;
@@ -39,14 +40,19 @@ public class UserControllerTest {
 
     private ObjectMapper objectMapper = new ObjectMapper();
 
-    @Test
-    public void signUpTest() throws Exception {
-        RegistrationDto registrationDto = new RegistrationDto();
+    private RegistrationDto registrationDto;
+
+    @Before
+    public void setUp() {
+        registrationDto = new RegistrationDto();
         registrationDto.setFirstName("firstName");
         registrationDto.setLastName("lastName");
         registrationDto.setEmailAddress("some@gmail.com");
         registrationDto.setPassword("password");
+    }
 
+    @Test
+    public void signUpTest() throws Exception {
         UserDto userDto = new UserDto();
         userDto.setId(1);
         userDto.setFirstName(registrationDto.getFirstName());
@@ -65,5 +71,27 @@ public class UserControllerTest {
                 .andExpect(jsonPath("$.lastName", Matchers.is(userDto.getLastName())))
                 .andExpect(jsonPath("$.emailAddress", Matchers.is(userDto.getEmailAddress())))
                 .andExpect(jsonPath("$.isPremium", Matchers.is(false)));
+    }
+
+    @Test
+    public void signUpWithoutFirstName() throws Exception {
+        registrationDto.setFirstName(null);
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.firstName", Matchers.is("Must be filled")));
+    }
+
+    @Test
+    public void signUpWithEmptyFirstName() throws Exception {
+        registrationDto.setFirstName("");
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.firstName", Matchers.is("Must be filled")));
     }
 }

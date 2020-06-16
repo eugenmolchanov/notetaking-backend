@@ -4,6 +4,7 @@ import com.notetakingplus.law.common.entity.Role;
 import com.notetakingplus.law.common.entity.User;
 import com.notetakingplus.law.common.repository.UserRepository;
 import com.notetakingplus.law.mobile.config.TestJpaPersistenceConfig;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.PersistenceException;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -27,6 +29,18 @@ public class UserRepositoryTest {
 
     @Autowired
     private TestEntityManager testEntityManager;
+
+    private User user;
+
+    @Before
+    public void setUp() {
+        user = new User();
+        user.setFirstName("foo");
+        user.setLastName("bar");
+        user.setEmailAddress("foo@gmail.com");
+        user.setPassword("password");
+        user.setRole(Role.USER);
+    }
 
     @Test
     public void getByEmailAddressAndPasswordTest() {
@@ -52,13 +66,6 @@ public class UserRepositoryTest {
 
     @Test
     public void saveUserTest() {
-        User user = new User();
-        user.setFirstName("foo");
-        user.setLastName("bar");
-        user.setEmailAddress("foo@gmail.com");
-        user.setPassword("password");
-        user.setRole(Role.USER);
-
         User savedUser = userRepository.save(user);
         testEntityManager.flush();
         testEntityManager.clear();
@@ -75,5 +82,23 @@ public class UserRepositoryTest {
             softly.assertThat(foundUser.getPassword()).isEqualTo(user.getPassword());
             softly.assertThat(foundUser.getRole()).isEqualTo(Role.USER);
         });
+    }
+
+    @Test(expected = PersistenceException.class)
+    public void saveUserDuplicateEmailTest() {
+        userRepository.save(user);
+        testEntityManager.flush();
+        testEntityManager.clear();
+
+        User sameUser = new User();
+        sameUser.setEmailAddress(user.getEmailAddress());
+        sameUser.setRole(user.getRole());
+        sameUser.setFirstName(user.getFirstName());
+        sameUser.setLastName(user.getLastName());
+        sameUser.setPassword(user.getPassword());
+
+        userRepository.save(sameUser);
+        testEntityManager.flush();
+        testEntityManager.clear();
     }
 }
