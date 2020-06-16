@@ -76,12 +76,14 @@ public class UserControllerTest {
     @Test
     public void signUpWithoutFirstName() throws Exception {
         registrationDto.setFirstName(null);
+        String registrationJson = objectMapper.writeValueAsString(registrationDto);
 
         mockMvc.perform(post("/registration")
-                .content(objectMapper.writeValueAsString(registrationDto))
+                .content(registrationJson)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.firstName", Matchers.is("Must be filled")));
+
     }
 
     @Test
