@@ -25,7 +25,7 @@ public class AuthControllerIntegrationTest {
 
     @Test
     public void authenticateSuccess() {
-        webTestClient.post().uri("/authenticate")
+        webTestClient.post().uri("/authentication")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(new AuthenticationRequestDto("yauhenmalchanau@gmail.com", "password")), AuthenticationRequestDto.class)
                 .exchange()
@@ -37,7 +37,7 @@ public class AuthControllerIntegrationTest {
 
     @Test
     public void authenticateFail() {
-        webTestClient.post().uri("authenticate")
+        webTestClient.post().uri("authentication")
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(Mono.just(new AuthenticationRequestDto("some0@gmail.com", "password")), AuthenticationRequestDto.class)
                 .exchange()

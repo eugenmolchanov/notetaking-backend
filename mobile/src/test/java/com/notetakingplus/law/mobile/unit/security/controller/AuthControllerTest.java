@@ -47,7 +47,7 @@ public class AuthControllerTest {
     public void authenticateSuccess() throws Exception {
         given(userDetailsService.loadUserByUsername(anyString())).willReturn(new User("some@gmail.com", passwordEncoder.encode("password"), true, true, true, true, List.of()));
 
-        mvc.perform(post("/authenticate")
+        mvc.perform(post("/authentication")
                 .content(new ObjectMapper().writeValueAsString(new AuthenticationRequestDto("some@gmail.com", "password")))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
@@ -61,7 +61,7 @@ public class AuthControllerTest {
     public void authenticateDisabledUser() throws Exception {
         given(userDetailsService.loadUserByUsername(anyString())).willReturn(new User("some@gmail.com", passwordEncoder.encode("password"), false, true, true, true, List.of()));
 
-        mvc.perform(post("/authenticate")
+        mvc.perform(post("/authentication")
                 .content(new ObjectMapper().writeValueAsString(new AuthenticationRequestDto("some@gmail.com", "password")))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isUnauthorized())
@@ -72,7 +72,7 @@ public class AuthControllerTest {
     public void authenticateLockedUser() throws Exception {
         given(userDetailsService.loadUserByUsername(anyString())).willReturn(new User("some@gmail.com", passwordEncoder.encode("password"), true, true, true, false, List.of()));
 
-        mvc.perform(post("/authenticate")
+        mvc.perform(post("/authentication")
                 .content(new ObjectMapper().writeValueAsString(new AuthenticationRequestDto("some@gmail.com", "password")))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isUnauthorized())
@@ -83,7 +83,7 @@ public class AuthControllerTest {
     public void authenticateMissingUser() throws Exception {
         given(userDetailsService.loadUserByUsername(anyString())).willThrow(UsernameNotFoundException.class);
 
-        mvc.perform(post("/authenticate")
+        mvc.perform(post("/authentication")
                 .content(new ObjectMapper().writeValueAsString(new AuthenticationRequestDto("some@gmail.com", "password")))
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isUnauthorized())

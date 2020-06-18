@@ -96,4 +96,83 @@ public class UserControllerTest {
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.firstName", Matchers.is("Must be filled")));
     }
+
+    @Test
+    public void signUpWithoutLastName() throws Exception {
+        registrationDto.setLastName(null);
+        String registrationJson = objectMapper.writeValueAsString(registrationDto);
+
+        mockMvc.perform(post("/registration")
+                .content(registrationJson)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.lastName", Matchers.is("Must be filled")));
+
+    }
+
+    @Test
+    public void signUpWithEmptyLastName() throws Exception {
+        registrationDto.setLastName("");
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.lastName", Matchers.is("Must be filled")));
+    }
+
+    @Test
+    public void signUpWithoutEmail() throws Exception {
+        registrationDto.setEmailAddress(null);
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.emailAddress", Matchers.is("Must be filled")));
+    }
+
+    @Test
+    public void signUpWithInvalidEmail() throws Exception {
+        registrationDto.setEmailAddress("some");
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.emailAddress", Matchers.is("Invalid email address")));
+    }
+
+    @Test
+    public void signUpWithoutPassword() throws Exception {
+        registrationDto.setPassword(null);
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.password", Matchers.is("Must be filled")));
+    }
+
+    @Test
+    public void signUpWithEmptyPassword() throws Exception {
+        registrationDto.setPassword("");
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.password", Matchers.is("Must be filled")));
+    }
+
+    @Test
+    public void signUpWithInvalidPassword() throws Exception {
+        registrationDto.setPassword("432");
+
+        mockMvc.perform(post("/registration")
+                .content(objectMapper.writeValueAsString(registrationDto))
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.password", Matchers.is("Password doesn't meet the requirements")));
+    }
 }

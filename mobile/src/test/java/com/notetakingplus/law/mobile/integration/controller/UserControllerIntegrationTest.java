@@ -32,7 +32,7 @@ public class UserControllerIntegrationTest {
         registrationDto = new RegistrationDto();
         registrationDto.setFirstName("firstName");
         registrationDto.setLastName("lastName");
-        registrationDto.setEmailAddress("some3@gmail.com");
+        registrationDto.setEmailAddress("some4@gmail.com");
         registrationDto.setPassword("password");
     }
 

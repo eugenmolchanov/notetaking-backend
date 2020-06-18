@@ -27,7 +27,7 @@ public class AuthenticationController {
     @Autowired
     private JwtTokenUtils jwtTokenUtils;
 
-    @PostMapping(value = "/authenticate")
+    @PostMapping(value = "/authentication")
     public ResponseEntity<AuthenticationResponseDto> generateAuthenticationToken(
             @RequestBody AuthenticationRequestDto authenticationRequestDto
     ) {
