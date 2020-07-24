@@ -1,1 +1,1 @@
-web: cd mobile && mvn spring-boot:run
+web: cd mobile && java -jar target/java-getting-started-1.0.jar
