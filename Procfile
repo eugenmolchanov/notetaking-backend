@@ -1,1 +1,1 @@
-web: cd mobile && java -jar target/java-getting-started-1.0.jar
+web: cd mobile && java -jar target/mobile-0.0.1-SNAPSHOT.jar
