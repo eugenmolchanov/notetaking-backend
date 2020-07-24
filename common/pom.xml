@@ -12,6 +12,8 @@
     <artifactId>common</artifactId>
 
     <properties>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
         <spring.version>5.1.9.RELEASE</spring.version>
         <spring.data.jpa.version>2.1.10.RELEASE</spring.data.jpa.version>
     </properties>
