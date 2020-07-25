@@ -52,7 +52,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests().antMatchers("/authentication", "/registration").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .requiresChannel()
+                .anyRequest()
+                .requiresSecure();
 
         httpSecurity.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
     }
