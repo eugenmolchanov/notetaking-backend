@@ -49,14 +49,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
+//                .requiresChannel()
+//                .anyRequest()
+//                .requiresSecure()
+//                .and()
                 .authorizeRequests().antMatchers("/authentication", "/registration").permitAll()
                 .anyRequest().authenticated().and()
                 .exceptionHandling().authenticationEntryPoint(authEntryPoint).and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .requiresChannel()
-                .anyRequest()
-                .requiresSecure();
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         httpSecurity.addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class);
     }
