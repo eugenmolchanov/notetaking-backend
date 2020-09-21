@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  ntpdb:
+    image: postgres:10-alpine
+    container_name: law
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=law
+    expose:
+      - "5432"
+  ntpmobile:
+    build: .
+    container_name: ntp_mobile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - ntpdb
+    environment:
+      DB_HOST: ntpdb
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: docker
+
+volumes:
+  db_data:
