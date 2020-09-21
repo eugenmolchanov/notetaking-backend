@@ -13,6 +13,7 @@ module common {
     requires spring.orm;
     requires spring.data.commons;
     requires spring.data.jpa;
+    requires spring.tx;
 
     requires com.zaxxer.hikari;
     requires org.flywaydb.core;
